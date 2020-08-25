@@ -9,7 +9,20 @@ import java.time.LocalDateTime;
 
 public class Menu {
     private ArrayList<MenuItem> menuList;
-    private LocalDateTime lastUpdate;
+    private String lastUpdate;
+
+    public Menu () {
+        this.menuList = new ArrayList<>(); //empty array list
+        this.lastUpdate = getCurrentDate();
+    }
+
+    public ArrayList<MenuItem> getMenu() { return this.menuList; }
+    public String getLastUpdate() { return this.lastUpdate; }
+
+    public void addItem(MenuItem item) {
+        this.menuList.add(item);
+        this.lastUpdate = getCurrentDate(); //update most recent date
+    }
 
     public static String getCurrentDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -19,11 +32,12 @@ public class Menu {
 
 
 
-    public static void main(String[] args) {
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//        LocalDateTime now = LocalDateTime.now();
-//        System.out.println(dtf.format(now));
+//    public static void main(String[] args) {
+////        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+////        LocalDateTime now = LocalDateTime.now();
+////        System.out.println(dtf.format(now));
+//
+//        System.out.println(getCurrentDate());
+//    }
 
-        System.out.println(getCurrentDate());
-    }
 }
