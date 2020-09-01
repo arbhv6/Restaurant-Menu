@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class MenuItem {
     private String name;
     private double price;
@@ -21,5 +23,21 @@ public class MenuItem {
     public String getCategory() { return this.category; }
     public Boolean getNewItem() { return this.newItem; }
 
+    public boolean isNew() {
+        return newItem;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return name.equals(menuItem.name) &&
+                description.equals(menuItem.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description);
+    }
 }
